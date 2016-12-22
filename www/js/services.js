@@ -1,10 +1,10 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
+.service('Todos', function Todos () {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
-  var chats = [{
+  this.data = [{
     id: 0,
     name: 'Ben Sparrow',
     lastText: 'You on your way?',
@@ -31,20 +31,21 @@ angular.module('starter.services', [])
     face: 'img/mike.png'
   }];
 
-  return {
-    all: function() {
-      return chats;
-    },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
-    },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
-        }
-      }
-      return null;
+    this.all = function all () {
+        return this.data;
     }
-  };
+    
+    this.remove = function remove (chat) {
+        this.data.splice(this.data.indexOf(chat), 1)
+    }
+    
+    this.get = function get (id) {
+        var todo = {}
+        this.data.map(function(el) {
+            if (el.id == id) {
+                todo = el
+            }
+        })
+    return todo
+    }
 });
