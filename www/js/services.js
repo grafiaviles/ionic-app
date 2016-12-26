@@ -1,9 +1,6 @@
 angular.module('starter.services', [])
-
 .service('Todos', function Todos () {
-  // Might use a resource here that returns a JSON array
 
-  // Some fake testing data
   this.data = [{
     id: 0,
     desc: 'Ben Sparrow',
